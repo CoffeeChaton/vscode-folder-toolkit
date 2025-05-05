@@ -1,25 +1,41 @@
 {
     "compilerOptions": {
-        "module": "Node16",
-        "target": "ES2022",
+        "target": "ES2023", // use esbuild.config.ts
+        "noEmit": true,
+        "outDir": "./tsc_out",
         "lib": [
-            "ES2022",
+            "DOM", // keep vitest happy
+            "ESNext",
         ],
         "sourceMap": true,
-        "rootDir": "src",
-        "noEmit": true,
-        "strict": true, /* enable all strict type-checking options */
-        /* Additional Checks */
-        // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
-        // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
-        // "noUnusedParameters": true,  /* Report errors on unused parameters. */
-
-        // "skipLibCheck": true,
-
-        "isolatedModules": true,
-        "resolveJsonModule": true,
-        //   "moduleResolution": "bundler",
-        "useDefineForClassFields": true,
-        "allowImportingTsExtensions": true,
+        //
+        "strict": true,
+        // "verbatimModuleSyntax": true, // this is cjs now ...
+        // "noUncheckedIndexedAccess": true, // check arr[0] === undefined
+        "noImplicitOverride": true, // TypeScript 4.3 has Override
+        "exactOptionalPropertyTypes": true, // colorThemeOverride?: "dark" | "light";
+        "forceConsistentCasingInFileNames": true, // windows/Mac file name
+        "noFallthroughCasesInSwitch": true, // switch case has break / return
+        "noImplicitReturns": true, // don't forget return
+        "noPropertyAccessFromIndexSignature": true, // onj.xxx vs obj['xxx']
+        "esModuleInterop": true,
+        "resolveJsonModule": true, // allow import a from "./a.json"
+        "moduleResolution": "bundler",
+        "module": "ESNext",
+        "declaration": true,
+        "isolatedDeclarations": true, // all export show has type
+        "skipLibCheck": false,
+        "types": [
+            "node",
+        ],
     },
+    "include": [
+        "src",
+        "eslint.config.js",
+        "esbuild.js",
+        "rolldown.config.ts",
+    ],
+    "exclude": [
+        "node_modules",
+    ],
 }

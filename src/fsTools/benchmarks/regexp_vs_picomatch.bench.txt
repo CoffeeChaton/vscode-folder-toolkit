@@ -1,0 +1,38 @@
+
+clk: ~4.27 GHz
+cpu: Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz
+runtime: node 23.11.0 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+• small (length ["/home/w2u/dev/","/home/w2u/.cache/"])(size 23450)
+------------------------------------------- -------------------------------
+regexp                        58.94 ms/iter  59.06 ms               █      
+                      (56.14 ms … 66.94 ms)  60.37 ms ▅  ▅ ▅▅▅  ▅ ▅ █ ▅   ▅
+                    (  4.45 mb …   5.39 mb)   5.04 mb █▁▁█▁███▁▁█▁█▁█▁█▁▁▁█
+
+picomatch                     66.07 ms/iter  65.63 ms         █            
+                      (64.24 ms … 74.00 ms)  66.62 ms ▅   ▅ ▅▅█▅▅ ▅      ▅▅
+                    (  4.86 mb …   5.32 mb)   5.11 mb █▁▁▁█▁█████▁█▁▁▁▁▁▁██
+
+summary
+  regexp
+   1.12x faster than picomatch
+
+• a2 (length ["/home/w2u/dev/","/home/w2u/.cache/","/home"])(size 92020)
+------------------------------------------- -------------------------------
+regexp                       334.77 ms/iter 336.83 ms   █                  
+                    (330.84 ms … 340.63 ms) 339.14 ms ▅▅█  ▅  ▅ ▅▅  ▅ ▅   ▅
+                    ( 12.19 mb …  26.10 mb)  19.14 mb ███▁▁█▁▁█▁██▁▁█▁█▁▁▁█
+
+picomatch                    382.69 ms/iter 384.55 ms █ ██    █  █ ██ ███ █
+                    (377.17 ms … 389.71 ms) 385.97 ms █ ██    █  █ ██ ███ █
+                    ( 12.24 mb …  26.11 mb)  19.17 mb █▁██▁▁▁▁█▁▁█▁██▁███▁█
+
+summary
+  regexp
+   1.14x faster than picomatch
+
+• a3 (length ["/home","/home/w2u/dev/","/home/w2u/.cache/"])(size 92020)
+------------------------------------------- -------------------------------
+regexp                       337.92 ms/iter 338.20 ms          █           

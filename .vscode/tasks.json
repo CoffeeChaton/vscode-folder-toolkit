@@ -3,62 +3,38 @@
 {
     "version": "2.0.0",
     "tasks": [
+        // {
+        //     "label": "esbuild",
+        //     "type": "npm", // package.json
+        //     "script": "watch:esbuild", // package.json --> script --> npm run dev
+        //     "runOptions": {
+        //         "runOn": "folderOpen",
+        //     },
+        // },
         {
-            "label": "watch",
-            "dependsOn": [
-                "npm: watch:tsc",
-                "npm: watch:esbuild",
-            ],
-            "presentation": {
-                "reveal": "never",
-            },
+            "type": "npm",
+            "script": "build", // use same name as in package.json
             "group": {
                 "kind": "build",
                 "isDefault": true,
             },
         },
         {
-            "type": "npm",
-            "script": "watch:esbuild",
-            "group": "build",
-            "problemMatcher": "$esbuild-watch",
-            "isBackground": true,
-            "label": "npm: watch:esbuild",
-            "presentation": {
-                "group": "watch",
-                "reveal": "never",
-            },
-        },
-        {
+            "label": "tsc",
             "type": "npm",
             "script": "watch:tsc",
-            "group": "build",
-            "problemMatcher": "$tsc-watch",
-            "isBackground": true,
-            "label": "npm: watch:tsc",
-            "presentation": {
-                "group": "watch",
-                "reveal": "never",
+            "runOptions": {
+                "runOn": "folderOpen",
             },
         },
         {
+            "label": "vitest",
             "type": "npm",
-            "script": "watch-tests",
-            "problemMatcher": "$tsc-watch",
-            "isBackground": true,
-            "presentation": {
-                "reveal": "never",
-                "group": "watchers",
+            "script": "watch:vitest",
+            "runOptions": {
+                "runOn": "folderOpen",
             },
-            "group": "build",
         },
-        {
-            "label": "tasks: watch-tests",
-            "dependsOn": [
-                "npm: watch",
-                "npm: watch-tests",
-            ],
-            "problemMatcher": [],
-        },
+        // watch:vitest
     ],
 }

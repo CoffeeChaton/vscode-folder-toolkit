@@ -1,0 +1,77 @@
+import type { TImg2webp_config } from '../../config/img2webp.def';
+import type { TProgress, TToken } from '../getHash/def';
+import * as vscode from 'vscode';
+import { name } from '../../../package.json';
+import { safeParserConfig_1 } from '../../config/img2webps.chema';
+import { get_bin_Path } from '../share/get_bin_Path';
+import { openAndShow } from '../share/openAndShow';
+import { ffmpeg_core } from './ffmpeg_core';
+
+async function getConfig(): Promise<TImg2webp_config | undefined> {
+    const allConfig = vscode.workspace.getConfiguration(name);
+    const section = 'ffmpeg';
+    const Configs: unknown = allConfig.get<unknown>(section);
+    if (!Array.isArray(Configs)) {
+        vscode.window.showErrorMessage(`${name}.${section} should be an array`);
+        return;
+    }
+
+    for (const config of Configs) {
+        const c = safeParserConfig_1(config);
+        if (!c.success) {
+            vscode.window.showErrorMessage(`${name}.${section} some config is invalid`);
+            return;
+        }
+    }
+
+    type TItem = {
+        label: string,
+        v: TImg2webp_config,
+    };
+    const items: TItem[] = Configs.map((v: TImg2webp_config): TItem => ({ label: v.name, v }));
+    const config: TItem | undefined = await vscode.window.showQuickPick(items, { title: 'select option' });
+    if (config === undefined) return;
+    return structuredClone(config.v);
+}
+
+export async function my_ffmpeg(_file: vscode.Uri, selectedFiles: vscode.Uri[]): Promise<void> {
+    const select: readonly string[] = selectedFiles.map((u): string => u.fsPath.replaceAll('\\', '/'));
+
+    const ffmpeg_path: string | undefined = get_bin_Path('ffmpeg_path');
+    if (ffmpeg_path === undefined) return;
+
+    const selectConfig: TImg2webp_config | undefined = await getConfig();
+    if (selectConfig === undefined) return;
+
+    vscode.window.withProgress(
+        {
+            location: vscode.ProgressLocation.Notification,
+            title: 'ffmpeg_task',
+            cancellable: true,
+        },
+        async (progress: TProgress, token: TToken) => {
+            token.onCancellationRequested((): void => {
+                vscode.window.showInformationMessage('task is cancel!');
+            });
+            const ans = await ffmpeg_core(
+                ffmpeg_path,
+                select,
+                selectConfig,
+                progress,
+                token,
+            );
+
+            if (token.isCancellationRequested) return;
+
+            if (selectConfig.repors.includes('json')) {
+                void openAndShow('json', JSON.stringify(ans.json_report, null, '\t'));
+            }
+            if (selectConfig.repors.includes('md')) {
+                void openAndShow('markdown', ans.markdown);
+            }
+
+            progress.report({ message: 'finish', increment: 100 });
+            vscode.window.showInformationMessage('task is finish');
+        },
+    );
+}

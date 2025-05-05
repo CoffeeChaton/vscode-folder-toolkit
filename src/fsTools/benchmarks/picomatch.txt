@@ -1,0 +1,49 @@
+clk: ~4.34 GHz
+cpu: Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz
+runtime: node 23.11.0 (x64-linux)
+
+benchmark                   avg (min … max) p75 / p99    (min … top 1%)
+------------------------------------------- -------------------------------
+• small (length ["/home/w2u/dev/","/home/w2u/.cache/"])(size 23445)
+------------------------------------------- -------------------------------
+matchesGlob                  109.07 ms/iter 107.78 ms  █                   
+                    (107.04 ms … 122.37 ms) 111.20 ms  ██ █                
+                    (  3.90 mb …   3.90 mb)   3.90 mb █████▁█▁▁▁▁▁▁▁▁▁▁▁▁▁█
+(node:23842) ExperimentalWarning: glob is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+picomatch                      2.90 ms/iter   2.95 ms    █                 
+                        (2.78 ms … 3.49 ms)   3.32 ms    █▆                
+                    (  2.91 mb …   5.27 mb)   4.37 mb ▃▄███▄▃█▆▃▁▁▁▁▁▁▁▁▁▁▁
+
+summary
+  picomatch
+   37.58x faster than matchesGlob
+
+• a2 (length ["/home/w2u/dev/","/home/w2u/.cache/","/home"])(size 91958)
+------------------------------------------- -------------------------------
+matchesGlob                  401.76 ms/iter 402.43 ms     █                
+                    (399.25 ms … 407.76 ms) 403.56 ms ▅  ▅█  ▅▅▅ ▅   ▅   ▅▅
+                    ( 10.43 mb …  10.43 mb)  10.43 mb █▁▁██▁▁███▁█▁▁▁█▁▁▁██
+
+picomatch                      8.72 ms/iter   8.77 ms        █▄            
+                        (8.52 ms … 9.03 ms)   9.01 ms       ▇██▅           
+                    (945.23 kb … 945.73 kb) 945.54 kb ▅▅▆▆▆██████▆▅▆▅▆▁▁▃▁▅
+
+summary
+  picomatch
+   46.05x faster than matchesGlob
+
+• a3 (length ["/home","/home/w2u/dev/","/home/w2u/.cache/"])(size 91958)
+------------------------------------------- -------------------------------
+matchesGlob                  406.52 ms/iter 405.44 ms            █         
+                    (403.44 ms … 423.31 ms) 406.16 ms ▅      ▅▅  █▅▅▅▅▅   ▅
+                    ( 10.43 mb …  10.43 mb)  10.43 mb █▁▁▁▁▁▁██▁▁██████▁▁▁█
+
+picomatch                      8.91 ms/iter   8.91 ms █▂                   
+                       (8.75 ms … 10.67 ms)  10.57 ms ██▆                  
+                    (945.40 kb …   1.66 mb) 955.82 kb ███▃▂▁▁▁▁▁▁▁▁▁▂▁▁▁▁▁▂
+
+summary
+  picomatch
+   45.64x faster than matchesGlob

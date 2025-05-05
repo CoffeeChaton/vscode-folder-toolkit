@@ -1,0 +1,10 @@
+*.ts eol=lf
+*.tsx eol=lf
+*.json eol=lf
+*.jsonc eol=lf
+*.yaml eol=lf
+*.js eol=lf
+*.md eol=lf
+*.mdx eol=lf
+*.txt eol=lf
+pre-commit eol=lf

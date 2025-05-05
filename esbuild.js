@@ -1,6 +1,9 @@
-const esbuild = require('esbuild');
+/* eslint-disable @typescript-eslint/use-unknown-in-catch-callback-variable */
+/* eslint-disable no-undef */
+import { writeFile } from 'node:fs/promises';
+import { context } from 'esbuild';
 
-const production = process.argv.includes('--production');
+// const production = process.argv.includes('--production');
 const watch = process.argv.includes('--watch');
 
 /**
@@ -24,35 +27,39 @@ const esbuildProblemMatcherPlugin = {
 };
 
 async function main() {
-    const ctx = await esbuild.context({
+    const ctx = await context({
         entryPoints: [
             'src/extension.ts',
         ],
         bundle: true,
-        format: 'cjs',
-        minify: production,
-        sourcemap: !production,
-        sourcesContent: false,
+        format: 'esm',
+        minify: false,
+        sourcemap: false,
+        //  sourcesContent: false,
         platform: 'node',
-        outfile: 'dist/extension.js',
+        outdir: 'dist',
+        // loader: { '.wasm': 'file', '.node': 'file' },
         external: ['vscode'],
-        logLevel: 'silent',
+        // logLevel: 'silent',
         plugins: [
             /* add to the end of plugins array */
             esbuildProblemMatcherPlugin,
         ],
+        metafile: !watch,
+        legalComments: 'linked',
         target: ['node20.18'],
         treeShaking: true,
     });
     if (watch) {
         await ctx.watch();
     } else {
-        await ctx.rebuild();
+        const { metafile } = await ctx.rebuild();
+        await writeFile('dist/meta.json', JSON.stringify(metafile, null, '\t'));
         await ctx.dispose();
     }
 }
 
-main().catch(e => {
+main().catch((e) => {
     console.error(e);
     process.exit(1);
 });
