@@ -1,4 +1,7 @@
-const SIZES = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB'] as const;
+/* eslint-disable sonarjs/no-nested-conditional */
+
+/** https://en.wikipedia.org/wiki/Byte Byte === B */
+const SIZES = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB'] as const;
 
 export function fmtFileSize(bytes: number, decimalPlaces = 2): string {
     if (bytes === 0) {
@@ -19,5 +22,7 @@ export function fmtFileSize(bytes: number, decimalPlaces = 2): string {
         i += 1;
     }
 
-    return `${isNegative ? '-' : ''}${size.toFixed(decimalPlaces)} ${SIZES[i]}`;
+    return i === 0
+        ? `${isNegative ? '-' : ''}${size} ${SIZES[i]}`
+        : `${isNegative ? '-' : ''}${size.toFixed(decimalPlaces)} ${SIZES[i]}`;
 }

@@ -4,15 +4,14 @@ import { fmtFileSize } from './fmtFileSize.ts';
 
 describe('fmtFileSize', () => {
     it('should format 0 bytes correctly', () => {
-        expect(fmtFileSize(0)).toBe('0 Bytes');
-        expect(fmtFileSize(0, 0)).toBe('0 Bytes');
+        expect(fmtFileSize(0)).toBe('0 B');
+        expect(fmtFileSize(0, 0)).toBe('0 B');
 
-        expect(fmtFileSize(1)).toBe('1.00 Bytes');
-        expect(fmtFileSize(500)).toBe('500.00 Bytes');
-        expect(fmtFileSize(1023)).toBe('1023.00 Bytes');
-        expect(fmtFileSize(1023, 0)).toBe('1023 Bytes');
-        expect(fmtFileSize(500.123, 2)).toBe('500.12 Bytes');
-        expect(fmtFileSize(500.129, 2)).toBe('500.13 Bytes');
+        expect(fmtFileSize(1)).toBe('1 B');
+        expect(fmtFileSize(500)).toBe('500 B');
+        expect(fmtFileSize(1023)).toBe('1023 B');
+        expect(fmtFileSize(1023, 0)).toBe('1023 B');
+        expect(fmtFileSize(500, 2)).toBe('500 B');
 
         expect(fmtFileSize(1024)).toBe('1.00 KiB');
         expect(fmtFileSize(1024, 0)).toBe('1 KiB');
@@ -43,9 +42,9 @@ describe('fmtFileSize', () => {
         expect(fmtFileSize(1500, 5)).toBe('1.46484 KiB');
         expect(fmtFileSize(1024 * 1.000001, 3)).toBe('1.000 KiB'); // Test precision
 
-        expect(fmtFileSize(-1)).toBe('-1.00 Bytes');
+        expect(fmtFileSize(-1)).toBe('-1 B');
         expect(fmtFileSize(-1500)).toBe('-1.46 KiB');
         expect(fmtFileSize(-1024 * 1024 * 2.5, 1)).toBe('-2.5 MiB');
-        expect(fmtFileSize(-0, 0)).toBe('0 Bytes'); // -0 is treated as 0
+        expect(fmtFileSize(-0, 0)).toBe('0 B'); // -0 is treated as 0
     });
 });
