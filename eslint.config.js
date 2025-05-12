@@ -1,5 +1,4 @@
 // @ts-check
-
 // import oxlint from 'eslint-plugin-oxlint';
 import eslint from '@eslint/js';
 import perfectionist from 'eslint-plugin-perfectionist';
@@ -19,7 +18,7 @@ const tseslint_ruler = tseslint.config(
                 projectService: {
                     allowDefaultProject: [
                         'eslint.config.js',
-                        'esbuild.js',
+                        // 'esbuild.js',
                     ],
                 },
                 tsconfigRootDir: import.meta.dirname,
@@ -46,7 +45,7 @@ const tseslint_ruler = tseslint.config(
     },
 );
 
-export default [
+const config = [
     {
         plugins: {
             perfectionist,
@@ -97,15 +96,8 @@ export default [
         },
         ignores: [
             'dist/**/*.js',
-            '.vscode/**',
-            '.vscode/**',
-            'biome.jsonc',
-            'data/icon.md',
-            'README.md',
-            'tsconfig.json',
-            'vsc-extension-quickstart.md',
         ],
     },
-    // last
-    //  ...oxlint.buildFromOxlintConfigFile('./.oxlintrc.json'), // oxlint should be the last one
 ];
+
+export default config;

@@ -1,0 +1,35 @@
+import { writeFileSync } from 'node:fs';
+import { type BuildOptions, buildSync } from 'esbuild';
+
+function main() {
+    const t1 = Date.now();
+
+    const config: BuildOptions = {
+        entryPoints: [
+            'src/extension.ts',
+        ],
+        bundle: true,
+        format: 'esm',
+        minify: false,
+        sourcemap: true,
+        //  sourcesContent: false,
+        platform: 'node',
+        outdir: 'dist',
+        // loader: { '.wasm': 'file', '.node': 'file' },
+        external: ['vscode'],
+        // plugins: [
+        //     /* add to the end of plugins array */
+        //     // esbuildProblemMatcherPlugin,
+        // ],
+        metafile: true,
+        legalComments: 'linked',
+        target: ['node20.18'],
+        treeShaking: true,
+    };
+    const { metafile } = buildSync(config);
+    writeFileSync('dist/meta.json', JSON.stringify(metafile, null, '\t'));
+    const t2 = Date.now();
+    console.log('Build completed successfully', { ms: t2 - t1 });
+}
+
+main();
