@@ -1,6 +1,6 @@
 import type * as vscode from 'vscode';
 
-import type { TReport } from './getFileDataCore';
+import type { TReport } from './getFileDataCore.ts';
 
 export type TProgress = vscode.Progress<{
     message: string,

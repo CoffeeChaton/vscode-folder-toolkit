@@ -1,13 +1,13 @@
 import type { Buffer } from 'node:buffer';
 import type { Hash } from 'node:crypto';
 import type { Stats } from 'node:fs';
-import type { THash, THashConfig } from '../../config.hash';
-import type { TErrorLog, TProgress, TToken } from './def';
+import type { THash, THashConfig } from '../../config.hash.ts';
+import type { TErrorLog, TProgress, TToken } from './def.ts';
 import { createHash } from 'node:crypto';
 import { createReadStream, statSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { chunk } from 'es-toolkit';
-import { fmtFileSize } from '../../utility/fmtFileSize';
+import { fmtFileSize } from '../../utility/fmtFileSize.ts';
 
 function logErr(errLog: TErrorLog, e: unknown, fsPath: string): string {
     // https://stackoverflow.com/questions/8965606/node-and-error-emfile-too-many-open-files

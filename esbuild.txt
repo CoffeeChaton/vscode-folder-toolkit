@@ -1,10 +1,9 @@
 import { writeFileSync } from 'node:fs';
-import { type BuildOptions, buildSync } from 'esbuild';
+import { buildSync } from 'esbuild';
 
 function main() {
     const t1 = Date.now();
-
-    const config: BuildOptions = {
+    const { metafile } = buildSync({
         entryPoints: [
             'src/extension.ts',
         ],
@@ -25,8 +24,7 @@ function main() {
         legalComments: 'linked',
         target: ['node20.18'],
         treeShaking: true,
-    };
-    const { metafile } = buildSync(config);
+    });
     writeFileSync('dist/meta.json', JSON.stringify(metafile, null, '\t'));
     const t2 = Date.now();
     console.log('Build completed successfully', { ms: t2 - t1 });

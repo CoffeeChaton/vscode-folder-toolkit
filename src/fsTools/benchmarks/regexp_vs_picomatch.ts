@@ -1,5 +1,5 @@
 import picomatch from 'picomatch';
-import { getfsPathList, type TFilter } from '../CollectorFsPathEx';
+import { getfsPathList, type TFilter } from '../CollectorFsPathEx.ts';
 
 export const fn0 = (path_list: string[]): ReadonlySet<string> => {
     const rgList = [

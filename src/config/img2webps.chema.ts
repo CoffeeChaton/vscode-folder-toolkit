@@ -1,5 +1,5 @@
 import type { InferOutput } from 'valibot';
-import type { TImg2webp_config } from './img2webp.def';
+import type { TImg2webp_config } from './img2webp.def.ts';
 import { array, literal, number, object, safeParser, string, union } from 'valibot';
 
 const schema = object({

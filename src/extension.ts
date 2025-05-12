@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
-import { getHashVsc } from './command/getHash/getHashVsc';
-import { img2webp } from './command/img2webp/img2webp';
-import { my_ffmpeg } from './command/my_ffmpeg/my_ffmpeg';
+import { getHashVsc } from './command/getHash/getHashVsc.ts';
+import { img2webp } from './command/img2webp/img2webp.ts';
+import { my_ffmpeg } from './command/my_ffmpeg/my_ffmpeg.ts';
 
 export function activate(context: vscode.ExtensionContext): void {
     // https://github.com/microsoft/vscode/blob/89d6652d8f895f097de8c6ebb06981f92e59a130/extensions/git/package.nls.json#L99

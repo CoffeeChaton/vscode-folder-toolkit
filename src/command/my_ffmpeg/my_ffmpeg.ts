@@ -1,11 +1,11 @@
-import type { TImg2webp_config } from '../../config/img2webp.def';
-import type { TProgress, TToken } from '../getHash/def';
+import type { TImg2webp_config } from '../../config/img2webp.def.ts';
+import type { TProgress, TToken } from '../getHash/def.ts';
 import * as vscode from 'vscode';
-import { name } from '../../../package.json';
-import { safeParserConfig_1 } from '../../config/img2webps.chema';
-import { get_bin_Path } from '../share/get_bin_Path';
-import { openAndShow } from '../share/openAndShow';
-import { ffmpeg_core } from './ffmpeg_core';
+import { safeParserConfig_1 } from '../../config/img2webps.chema.ts';
+import { name } from '../../package.json.ts';
+import { get_bin_Path } from '../share/get_bin_Path.ts';
+import { openAndShow } from '../share/openAndShow.ts';
+import { ffmpeg_core } from './ffmpeg_core.ts';
 
 async function getConfig(): Promise<TImg2webp_config | undefined> {
     const allConfig = vscode.workspace.getConfiguration(name);

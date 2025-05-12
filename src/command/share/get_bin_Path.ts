@@ -1,8 +1,8 @@
 import { existsSync } from 'node:fs';
 import * as vscode from 'vscode';
-import { name } from '../../../package.json';
-import { N } from '../../fsTools/N';
-import { openAndShow } from './openAndShow';
+import { N } from '../../fsTools/N.ts';
+import { name } from '../../package.json.ts';
+import { openAndShow } from './openAndShow.ts';
 
 function md_cwebp_Path(full_key: string): string[] {
     return [

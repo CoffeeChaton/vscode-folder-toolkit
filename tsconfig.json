@@ -20,8 +20,9 @@
         "noPropertyAccessFromIndexSignature": true, // onj.xxx vs obj['xxx']
         "esModuleInterop": true,
         "resolveJsonModule": true, // allow import a from "./a.json"
-        "moduleResolution": "bundler",
-        "module": "ESNext",
+        "allowImportingTsExtensions": true,
+        "moduleResolution": "nodenext",
+        "module": "nodenext",
         "declaration": true,
         "isolatedDeclarations": true, // all export show has type
         "skipLibCheck": false,

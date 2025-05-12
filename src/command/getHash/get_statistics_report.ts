@@ -1,8 +1,8 @@
-import type { THashConfig } from '../../config.hash';
-import type { TStatistics } from './def';
-import type { TReport } from './getFileDataCore';
+import type { THashConfig } from '../../config.hash.ts';
+import type { TStatistics } from './def.ts';
+import type { TReport } from './getFileDataCore.ts';
 import { groupBy } from 'es-toolkit/array';
-import { name } from '../../../package.json';
+import { name } from '../../package.json.ts';
 
 export function get_statistics_report(datas: readonly TReport[], selectConfig: THashConfig): TStatistics {
     const minVal: number = selectConfig.minCollisionValueToShow;

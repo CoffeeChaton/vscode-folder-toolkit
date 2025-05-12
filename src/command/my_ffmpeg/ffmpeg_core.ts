@@ -1,17 +1,17 @@
-import type { TImg2webp_config } from '../../config/img2webp.def';
-import type { TProgress } from '../getHash/def';
-import type { TData, TStatistics } from '../img2webp/def';
+import type { TImg2webp_config } from '../../config/img2webp.def.ts';
+import type { TProgress } from '../getHash/def.ts';
+import type { TData, TStatistics } from '../img2webp/def.ts';
 import { stat } from 'node:fs/promises';
 import * as vscode from 'vscode';
-import { homepage, version } from '../../../package.json';
-import { getfsPathListEx } from '../../fsTools/getfsPathListEx';
-import { fmtFileSize } from '../../utility/fmtFileSize';
-import { math_sum } from '../../utility/math_sum';
-import { sleep } from '../../utility/sleep';
-import { exec_plus } from '../exec_plus';
-import { md_body } from '../img2webp/md/md_body';
-import { getDiffStr } from '../share/getDiffStr';
-import { getNeedFile } from '../share/getNeedFile';
+import { getfsPathListEx } from '../../fsTools/getfsPathListEx.ts';
+import { homepage, version } from '../../package.json.ts';
+import { fmtFileSize } from '../../utility/fmtFileSize.ts';
+import { math_sum } from '../../utility/math_sum.ts';
+import { sleep } from '../../utility/sleep.ts';
+import { exec_plus } from '../exec_plus.ts';
+import { md_body } from '../img2webp/md/md_body.ts';
+import { getDiffStr } from '../share/getDiffStr.ts';
+import { getNeedFile } from '../share/getNeedFile.ts';
 
 export async function ffmpeg_core(
     bin_Path: string,

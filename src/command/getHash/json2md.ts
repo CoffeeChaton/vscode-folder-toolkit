@@ -1,5 +1,5 @@
-import type { TJSON } from './def';
-import type { TReport } from './getFileDataCore';
+import type { TJSON } from './def.ts';
+import type { TReport } from './getFileDataCore.ts';
 
 export function json2md(json: TJSON): string {
     const { datas, statistics } = json.body;

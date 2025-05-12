@@ -1,7 +1,7 @@
 // eslint-disable no-plusplus
 import type { Stats } from 'node:fs';
 import { readdirSync, statSync } from 'node:fs';
-import { N } from './N';
+import { N } from './N.ts';
 
 export type TFilter = (path: string, rootPath: string) => boolean;
 

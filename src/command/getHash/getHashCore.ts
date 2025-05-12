@@ -1,12 +1,12 @@
-import type { THashConfig } from '../../config.hash';
-import type { TErrorLog, TJSON, TProgress, TToken } from './def';
-import type { TReport } from './getFileDataCore';
-import { homepage, version } from '../../../package.json';
-import { getfsPathListEx } from '../../fsTools/getfsPathListEx';
-import { sum } from '../../Math/sum';
-import { fmtFileSize } from '../../utility/fmtFileSize';
-import { get_statistics_report } from './get_statistics_report';
-import { getFileDataCoreEx } from './getFileDataCore';
+import type { THashConfig } from '../../config.hash.ts';
+import type { TErrorLog, TJSON, TProgress, TToken } from './def.ts';
+import type { TReport } from './getFileDataCore.ts';
+import { getfsPathListEx } from '../../fsTools/getfsPathListEx.ts';
+import { sum } from '../../Math/sum.ts';
+import { homepage, version } from '../../package.json.ts';
+import { fmtFileSize } from '../../utility/fmtFileSize.ts';
+import { get_statistics_report } from './get_statistics_report.ts';
+import { getFileDataCoreEx } from './getFileDataCore.ts';
 
 export type THashReport = {
     json: TJSON,

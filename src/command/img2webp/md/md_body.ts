@@ -1,4 +1,4 @@
-import type { TData, TStatistics } from '../def';
+import type { TData, TStatistics } from '../def.ts';
 
 export function md_body(datas: TData[], statistics: TStatistics): string[] {
     const md_arr: string[] = [];

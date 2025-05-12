@@ -1,6 +1,6 @@
 import picomatch from 'picomatch';
 import { expect, it } from 'vitest';
-import { fn0, fn1 } from './regexp_vs_picomatch';
+import { fn0, fn1 } from './regexp_vs_picomatch.ts';
 
 it('check picomatch exp', (): void => {
     const ignorePatterns = ['**/node_modules/**', '**/.git/**'];

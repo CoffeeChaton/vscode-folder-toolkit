@@ -1,5 +1,5 @@
 import type { InferOutput } from 'valibot';
-import type { THashConfig } from './config.hash';
+import type { THashConfig } from './config.hash.ts';
 import { array, literal, number, object, pipe, safeParser, string, toMinValue, union } from 'valibot';
 
 const schema = object({

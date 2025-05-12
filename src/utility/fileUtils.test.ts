@@ -1,6 +1,6 @@
 // fileUtils.test.ts
 import { describe, expect, it } from 'vitest';
-import { fmtFileSize } from './fmtFileSize';
+import { fmtFileSize } from './fmtFileSize.ts';
 
 describe('fmtFileSize', () => {
     it('should format 0 bytes correctly', () => {

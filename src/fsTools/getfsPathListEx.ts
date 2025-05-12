@@ -1,6 +1,5 @@
-import type { TFilter } from './CollectorFsPathEx';
-
-import { getfsPathList } from './CollectorFsPathEx';
+import type { TFilter } from './CollectorFsPathEx.ts';
+import { getfsPathList } from './CollectorFsPathEx.ts';
 
 type TRes = {
     included: readonly string[],

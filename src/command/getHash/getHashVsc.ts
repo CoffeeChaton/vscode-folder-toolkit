@@ -1,12 +1,12 @@
-import type { THashConfig } from '../../config.hash';
-import type { TProgress, TToken } from './def';
-import type { THashReport } from './getHashCore';
+import type { THashConfig } from '../../config.hash.ts';
+import type { TProgress, TToken } from './def.ts';
+import type { THashReport } from './getHashCore.ts';
 import * as vscode from 'vscode';
-import { name } from '../../../package.json';
-import { safeParserConfig0 } from '../../config.hash.schema';
-import { openAndShow } from '../share/openAndShow';
-import { getHashCore } from './getHashCore';
-import { json2md } from './json2md';
+import { safeParserConfig0 } from '../../config.hash.schema.ts';
+import { name } from '../../package.json.ts';
+import { openAndShow } from '../share/openAndShow.ts';
+import { getHashCore } from './getHashCore.ts';
+import { json2md } from './json2md.ts';
 
 async function getConfig(): Promise<THashConfig | undefined> {
     const allConfig = vscode.workspace.getConfiguration(name);
