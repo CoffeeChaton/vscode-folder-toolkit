@@ -20,6 +20,7 @@ async function getConfig(): Promise<TImg2webp_config | undefined> {
         const c = safeParserConfig_1(config);
         if (!c.success) {
             vscode.window.showErrorMessage(`${name}.${section} some config is invalid`);
+            void openAndShow('json', JSON.stringify(c.issues, null, '\t'));
             return;
         }
     }
