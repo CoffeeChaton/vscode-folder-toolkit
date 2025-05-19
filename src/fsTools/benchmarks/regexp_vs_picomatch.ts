@@ -7,10 +7,8 @@ export const fn0 = (path_list: string[]): ReadonlySet<string> => {
         /(?:\/|^).git(?:$|\/)/u,
     ];
 
-    const filter: TFilter = (path: string, rootPath: string): boolean => {
-        // biome-ignore lint/style/useTemplate: <explanation>
-        const matchPath: string = path.replace(rootPath + '/', '');
-        return !rgList.some((rg) => rg.test(matchPath));
+    const filter: TFilter = (path: string): boolean => {
+        return !rgList.some((rg) => rg.test(path));
     };
 
     return getfsPathList(path_list, filter);
@@ -23,10 +21,8 @@ export const fn1 = (path_list: string[]): ReadonlySet<string> => {
     ];
     const excludeMatcher = picomatch(ignorePatterns, { dot: true, windows: false });
 
-    const filter: TFilter = (path: string, rootPath: string): boolean => {
-        // biome-ignore lint/style/useTemplate: <explanation>
-        const matchPath: string = path.replace(rootPath + '/', '');
-        return !excludeMatcher(matchPath);
+    const filter: TFilter = (path: string): boolean => {
+        return !excludeMatcher(path);
     };
 
     return getfsPathList(path_list, filter);

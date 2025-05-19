@@ -19,10 +19,8 @@ export function getfsPathListEx(
 
     const excluded: Record<string, string[]> = {};
 
-    const filter: TFilter = (path: string, root: string): boolean => {
-        // biome-ignore lint/style/useTemplate: <explanation>
-        const checkPath: string = path.replace(root + '/', '');
-        const blockingRule: TBlockRuler | undefined = blockList.find(({ reg }) => reg.test(checkPath));
+    const filter: TFilter = (path: string): boolean => {
+        const blockingRule: TBlockRuler | undefined = blockList.find(({ reg }) => reg.test(path));
         if (blockingRule) {
             excluded[blockingRule.name] ??= [];
             excluded[blockingRule.name].push(path);

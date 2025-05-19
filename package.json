@@ -64,9 +64,9 @@
                                 "maxOpenFiles": 5120,
                                 "minCollisionValueToShow": 5,
                                 "blockList": [
-                                    "(?:^|\\/)node_modules(?:\\/|$)",
-                                    "(?:^|\\/)\\.git(?:\\/|$)",
-                                    "(?:^|\\/)\\.svn(?:\\/|$)"
+                                    "/node_modules(?:/|$)",
+                                    "/\\.git(?:/|$)",
+                                    "/\\.svn(?:/|$)"
                                 ]
                             },
                             {
@@ -76,9 +76,9 @@
                                 "maxOpenFiles": 5120,
                                 "minCollisionValueToShow": 1,
                                 "blockList": [
-                                    "\\/node_modules(?:\\/|$)",
-                                    "\\/\\.git(?:\\/|$)",
-                                    "\\/\\.svn(?:\\/|$)"
+                                    "/node_modules(?:/|$)",
+                                    "/\\.git(?:/|$)",
+                                    "/\\.svn(?:/|$)"
                                 ]
                             },
                             {
@@ -88,9 +88,9 @@
                                 "maxOpenFiles": 5120,
                                 "minCollisionValueToShow": 1,
                                 "blockList": [
-                                    "\\/node_modules(?:\\/|$)",
-                                    "\\/\\.git(?:\\/|$)",
-                                    "\\/\\.svn(?:\\/|$)"
+                                    "/node_modules(?:/|$)",
+                                    "/\\.git(?:/|$)",
+                                    "/\\.svn(?:/|$)"
                                 ]
                             }
                         ],
@@ -133,9 +133,9 @@
                                     ".tif"
                                 ],
                                 "blockList": [
-                                    "\\/node_modules(?:\\/|$)",
-                                    "\\/\\.git(?:\\/|$)",
-                                    "\\/\\.svn(?:\\/|$)"
+                                    "/node_modules(?:/|$)",
+                                    "/\\.git(?:/|$)",
+                                    "/\\.svn(?:/|$)"
                                 ]
                             },
                             {
@@ -152,9 +152,9 @@
                                     ".tif"
                                 ],
                                 "blockList": [
-                                    "\\/node_modules(?:\\/|$)",
-                                    "\\/\\.git(?:\\/|$)",
-                                    "\\/\\.svn(?:\\/|$)"
+                                    "/node_modules(?:/|$)",
+                                    "/\\.git(?:/|$)",
+                                    "/\\.svn(?:/|$)"
                                 ]
                             }
                         ],
@@ -194,9 +194,9 @@
                                     ".mp3"
                                 ],
                                 "blockList": [
-                                    "\\/node_modules(?:\\/|$)",
-                                    "\\/\\.git(?:\\/|$)",
-                                    "\\/\\.svn(?:\\/|$)"
+                                    "/node_modules(?:/|$)",
+                                    "/\\.git(?:/|$)",
+                                    "/\\.svn(?:/|$)"
                                 ]
                             },
                             {
@@ -210,9 +210,9 @@
                                     ".mp3"
                                 ],
                                 "blockList": [
-                                    "\\/node_modules(?:\\/|$)",
-                                    "\\/\\.git(?:\\/|$)",
-                                    "\\/\\.svn(?:\\/|$)"
+                                    "/node_modules(?:/|$)",
+                                    "/\\.git(?:/|$)",
+                                    "/\\.svn(?:/|$)"
                                 ]
                             }
                         ],
