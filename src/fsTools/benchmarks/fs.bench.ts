@@ -3,6 +3,7 @@
 import { fdir } from 'fdir';
 import { bench, group, run, summary } from 'mitata';
 import { getfsPathList } from '../CollectorFsPathEx.js';
+import { readdirSync } from 'node:fs';
 
 const settings = {
     small: ['/home/w2u/dev/', '/home/w2u/.cache/'],
@@ -11,11 +12,11 @@ const settings = {
 };
 
 async function main() {
-    for (const [name, length] of Object.entries(settings)) {
-        group(`${name} (length ${JSON.stringify(length)})`, () => {
+    for (const [name, list] of Object.entries(settings)) {
+        group(`${name} (length ${JSON.stringify(list)})`, () => {
             summary(() => {
                 bench('fdir-sync', async () => {
-                    for (const r of length) {
+                    for (const r of list) {
                         const api = new fdir()
                             .filter((path: string) => {
                                 if (
@@ -32,7 +33,7 @@ async function main() {
                 });
 
                 bench('fdir', async () => {
-                    for (const r of length) {
+                    for (const r of list) {
                         const api = new fdir().filter((path: string) => {
                             if (
                                 path.includes('node_modules')
@@ -49,7 +50,7 @@ async function main() {
 
                 bench('my_func', async () => {
                     const rg = /\/(?:node_modules|\.git)$/u;
-                    const e = getfsPathList(length, (path: string) => {
+                    const e = getfsPathList(list, (path: string) => {
                         if (
                             rg.test(path)
                         ) {
@@ -57,6 +58,25 @@ async function main() {
                         }
                         return true;
                     });
+                });
+
+                bench('my_func', async () => {
+                    const rg = /\/(?:node_modules|\.git)$/u;
+                    // eslint-disable-next-line sonarjs/no-unused-collection
+                    const set = new Set<string>();
+                    for (const path of list) {
+                        const arr = readdirSync(path).filter((path: string) => {
+                            if (
+                                rg.test(path)
+                            ) {
+                                return false;
+                            }
+                            return true;
+                        });
+                        for (const a of arr) {
+                            set.add(a);
+                        }
+                    }
                 });
             });
         });
