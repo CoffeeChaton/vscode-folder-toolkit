@@ -15,7 +15,7 @@ export function getfsPathListEx(
         reg: RegExp,
     };
 
-    const blockList: readonly TBlockRuler[] = blockListRaw.map((reg: string): TBlockRuler => ({ name: reg, reg: new RegExp(reg) }));
+    const blockList: readonly TBlockRuler[] = blockListRaw.map((reg: string): TBlockRuler => ({ name: reg, reg: new RegExp(reg, 'v') }));
 
     const excluded: Record<string, string[]> = {};
 
