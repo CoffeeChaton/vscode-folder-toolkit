@@ -16,9 +16,15 @@ type TErrMsg = {
 
 export type TErrorLog = Record<string, TErrMsg[]>;
 
+export type TStatisticsReport = {
+    hash: string,
+    counter: number,
+    files: string[],
+};
+
 export type TStatistics = {
     msg: string[],
-    report: Record<string, string[]>,
+    report: TStatisticsReport[],
 };
 
 export type TJSON = {

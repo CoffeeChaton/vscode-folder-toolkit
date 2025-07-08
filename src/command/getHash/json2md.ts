@@ -1,3 +1,4 @@
+import { basename } from 'node:path';
 import type { TJSON } from './def.ts';
 import type { TReport } from './getFileDataCore.ts';
 
@@ -60,15 +61,21 @@ export function json2md(json: TJSON): string {
         '',
     );
 
-    for (const [k_hash_val, path_list] of Object.entries(statistics.report)) {
+    for (const { hash, counter, files } of statistics.report) {
         arr.push(
             '',
-            `- ${k_hash_val}`,
+            '- duplication_group:',
+            `  - hash: ${hash}`,
+            `  - count: ${counter}`,
+            `  - files:`,
         );
-        for (const path of path_list) {
-            arr.push(
-                `  - ${path}`,
-            );
+
+        for (const path of files) {
+            const fixWin = path.startsWith('/')
+                ? ''
+                : '/';
+            const link = `[${basename(path)}](file:${fixWin}${path})`;
+            arr.push(`      - ${link}`);
         }
     }
 

@@ -33,7 +33,8 @@ export function getfsPathListEx(
     const included: ReadonlySet<string> = getfsPathList(select, filter);
 
     return {
-        included: [...included],
+        // eslint-disable-next-line sonarjs/no-alphabetical-sort
+        included: [...included].sort(),
         excluded,
     };
 }
