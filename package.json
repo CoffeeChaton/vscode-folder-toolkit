@@ -30,7 +30,7 @@
     "main": "./dist/extension.js",
     "icon": "data/icon.png",
     "engines": {
-        "vscode": "^1.100.0"
+        "vscode": "^1.101.0"
     },
     "activationEvents": [],
     "contributes": {
