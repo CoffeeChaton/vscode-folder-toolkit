@@ -1,6 +1,7 @@
 // @ts-check
 // import oxlint from 'eslint-plugin-oxlint';
 import eslint from '@eslint/js';
+import { globalIgnores } from 'eslint/config';
 import perfectionist from 'eslint-plugin-perfectionist';
 import sonarjs from 'eslint-plugin-sonarjs';
 import tseslint from 'typescript-eslint';
@@ -94,10 +95,11 @@ const config = [
             'sonarjs/no-redundant-assignments': 'off',
             'sonarjs/no-skipped-tests': 'off',
         },
-        ignores: [
-            'dist/**/*.js',
-        ],
     },
+    globalIgnores([
+        //
+        'dist/**/*.js',
+    ]),
 ];
 
 export default config;

@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
-import json from '../../package.json' with { type: 'json' };
+import { contributes } from '../../package.json';
 import { safeParserConfig_1 } from './img2webps.chema.ts';
-const { configuration } = json.contributes;
+const { configuration } = contributes;
 
 it('check config-0 default val is allow', (): void => {
     const list: unknown[] = configuration[1].properties['vscode-folder-toolkit.img2webp']?.default ?? [];

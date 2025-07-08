@@ -7,9 +7,12 @@ const config: RolldownOptions = defineConfig({
         file: 'dist/extension.js',
         format: 'esm',
         minify: false,
-        target: 'es2022', // happy of nodejs 20
         sourcemap: true,
-        comments: 'preserve-legal', // esbuild legalComments: 'linked',
+
+        legalComments: 'inline', // esbuild legalComments: 'linked', // https://github.com/rolldown/rolldown/pull/4528
+    },
+    transform: {
+        target: 'es2022', // happy of nodejs 20 // https://github.com/rolldown/rolldown/pull/4651
     },
     treeshake: true,
     external: ['vscode'],

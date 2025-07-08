@@ -1,8 +1,8 @@
 import { expect, it } from 'vitest';
-import json from '../package.json' with { type: 'json' };
+import { contributes } from '../package.json';
 import { safeParserConfig0 } from './config.hash.schema.ts';
 
-const { configuration } = json.contributes;
+const { configuration } = contributes;
 
 it('check config-0 default val is allow', (): void => {
     const list: unknown[] = configuration[0].properties['vscode-folder-toolkit.hashToolkitConfig']?.default ?? [];
