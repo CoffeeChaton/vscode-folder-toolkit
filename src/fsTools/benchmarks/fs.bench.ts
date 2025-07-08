@@ -1,9 +1,9 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 // eslint-disable no-unused-vars
+import { readdirSync } from 'node:fs';
 import { fdir } from 'fdir';
 import { bench, group, run, summary } from 'mitata';
 import { getfsPathList } from '../CollectorFsPathEx.js';
-import { readdirSync } from 'node:fs';
 
 const settings = {
     small: ['/home/w2u/dev/', '/home/w2u/.cache/'],

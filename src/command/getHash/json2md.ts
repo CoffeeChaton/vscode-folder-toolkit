@@ -1,6 +1,6 @@
-import { basename } from 'node:path';
 import type { TJSON } from './def.ts';
 import type { TReport } from './getFileDataCore.ts';
+import { basename } from 'node:path';
 
 export function json2md(json: TJSON): string {
     const { datas, statistics } = json.body;
